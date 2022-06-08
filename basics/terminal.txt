@@ -4,6 +4,8 @@ pwd - shows your current location
 
 cat test.txt   - shows content of the file 
 
+tree  -  shows structure of directory 
+
 nano test.txt    - открывает test.txt в редакторе кода nano [редактор кода внутри терминала]  в терминале 
 code test.txt - открывает test.txt d редакторе vscode 
 
@@ -19,7 +21,7 @@ ls -l  - показывает более подробную информацию
 sudo  - superuser do   - права для установки 
 sudo apt install git    -  установить систему (системный установщик пакетов) [apt - installing command for system/ software]
 sudo snap install code --classic    - installing vscode software [snap - installing package for apps]
-
+brew install [name of app/software] for Mac
 
 # NAVIGATING THROUGH DIRECTORIES 
 cd - переходит в домашнюю папку
@@ -35,6 +37,9 @@ cd ..  - переходит в предыдующую папку
 cd ../..   - переходит на 2 папки назад 
 
 cd test/test2   -  переходит в папку test2, которая находится в папке test
+
+
+how to go home folder    -     cd /home/makers
 
 
 # CREATING FOLDERS
@@ -62,4 +67,6 @@ rm test - removes file test (if this file is not a folder)
 
 rm -rf test   - removes forcefully file/folder with all its content including other files/ folders 
 
+rmdir - removes empty folders only 
 
+rm -rf  - removes forcefully folder with its containing files/folders 
