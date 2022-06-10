@@ -141,3 +141,8 @@ print(hash(a))
 
 # id(a) = id(b)
 # hash(a) = hash(b)
+
+
+text1 = 'Makers'
+text2 = 'Bootcamp'
+print(text1, text2)
