@@ -2,6 +2,10 @@
 
 # словарь - изменяемый, итерируемый, неиндексируемый и неупорядоченный тип данных, в котором значения хранятся в парах (ключ: значение)
 
+import numbers
+from operator import contains
+
+
 dict = {'a': 'Hello', 'b': 2, 'c': 3}
 print(dict['a'])    # Hello
 
@@ -75,7 +79,127 @@ print(dict4.popitem())       #
 
 
 
+# ######################################################################## platform notes 
+
+dict_ = {}
+# print(type(dict_))    
+
+dict_1 = dict()
+print(type(dict_1))
+
+
+my_dict = {
+    "name": 'Sam', 
+    "lastname": 'White',
+    "age": 23
+}
+print(type(my_dict))
+
+
+ny_dict = dict(a=1, b=2, c=3)    # именнованный аргумент ключ=значение ---> key: value 
+print(my_dict)
+
+my_dict2 = {'a': 1, 'b': 2, 'c': 3}
+print(my_dict2)
+
+my_list = [['m', 1], ['a', 2], ['k', 3]]
+my_dict = dict(my_list)   # {'m': 1, 'a': 2, 'k': 3}
+
+# Methods 
+#  get(key, None)
+
+my_dict = {1: 'Tom', 2: 'John'}
+my_dict.get(2)      # John
+
+
+# clear 
+my_dict.clear()    # deletes dictionay 
+
+
+# copy 
+my_dict.copy()   # copies dictionary 
+
+# pop(key, default)   # deletes key: value and prints out deleted value 
+dict__ = {'name': 'Kate', 'height': 170}
+dict__.pop('height')
+
+# popitem() deletes key: value
+dict.popitem()
+# deletes last key: value and prints out dictionary of deleted key: value 
+
+# setdefault(key, default)
+
+dict_new = dict(a=1, b=2, c=4)
+print(dict_new.setdefault('b'))    # in case there is no requested key setdefault sets out requested default key
+
+# update method 
+# update()   объединяет - расширяет словари 
+dict3 = {1: 'Tom', 2: 'Alice'}
+dict4 = {4: 'John', 6: 'Ann'}
+dict1.update(dict2)
+print(dict1)
+# {1: 'Tom', 2: 'Alice', 4: 'John', 6: 'Ann'}
+
+
+# fromkeys(seq, value) method creates dictionary from sequences 
+numbers = [1, 2, 3, 4, 5]
+new_dict = dict.fromkeys(numbers, 'Makers')
+print(new_dict)
+# {1: 'Makers', 2: 'Makers', 3: 'Makers', 4: 'Makers', 5: 'Makers'}
+
+
+# example 2
+numbers = list('makers')
+new_dict = dict.fromkeys(numbers, 'Makers')
+print(new_dict)
+# {'m': 'Makers', 'a': 'Makers', 'k': 'Makers', 'e': 'Makers', 'r': 'Makers', 's': 'Makers'}
+
+# перебор элементов словаря 
+# for    items()    keys()      values()
+
+slovar = {'name': 'Kate', 'height': 173, 'weight': 60}
+print(slovar.items())
+# ([('name': 'Kate', 'height': 173, 'weight': 60)])     returns list with sets of key: value
+
+
+print(slovar.keys())
+# prints out only keys 
+# slovar_keys(['name', 'height', 'wewight'])       list with only key elements
+fruit = {
+    'banana': 1, 
+    'apple': 3,
+    'avocado': 5
+}
+
+for key, value in fruit.items():
+    if value == 2:
+        print(key)
 
 
 
+print(slovar.values())
+# prints only values 
 
+contacts = {
+    'Alice': '0703933732',
+    'John': '0997343434'
+}
+
+for info in contacts:
+    print(info)     #  prints out only keys 
+
+for name, tel in contacts.items():
+    print(f'Name: {name}, tel: {tel}')     #  prints out key: values method items() prints out keys and values 
+
+# вложенные словари - как они работают 
+nested_dict = {
+    'makers': {
+        'alid': 23,
+        'aisha': 27,
+        'aidai': 21
+    }
+}
+
+nested_dict['makers']    # prints out dictionary key: values 
+
+print(nested_dict['makers']['aidai'])   # prints out value of 'aidai' key 
