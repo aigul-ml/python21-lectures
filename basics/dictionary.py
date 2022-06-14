@@ -38,6 +38,11 @@ a, b = b, a
 
 a, b = 1, 2, 3      # Error because we have more values for keys 
 
+dict4 = dict(['ab', 'cd', 'de'])  
+# {'a': 'b', 'c': 'd', 'd': 'e'}
+
+key1, value1 = 'ab'
+dict5[key1] = value1     # {'a': 'b'}
 
 "============================== Методы словаря ====================================="
 dict_.clear()     # clears dictionary
