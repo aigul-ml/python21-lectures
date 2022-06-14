@@ -20,7 +20,26 @@ dict_ = {
     # {'s': 5}: 44   --> TypeError 
 }
 
-"====================================== Методы словаря ==============================================="
+
+"============================= создание словарей ========================================"
+
+dict1 = {'a': 9}
+dict2 = dict( [ ('key1', 'value1'), ('key2', 'value2')] ) 
+# dict2 = {'key1': 'value1', 'key2': 'value2'} 
+
+dict5 = dict('ab')     # ValueError 
+
+dict5 = dict(['ab'])   # {'a': 'b'} 
+
+dict5 = dict(['abc'])  # Error because we have included more than 2 values and it cannot create a pair for key: value in dict
+
+a, b = 5, 4
+a, b = b, a 
+
+a, b = 1, 2, 3      # Error because we have more values for keys 
+
+
+"============================== Методы словаря ====================================="
 dict_.clear()     # clears dictionary
 print(dict_)     # {} prints empty dictionary 
 
