@@ -78,6 +78,10 @@ dict_.values()   # returns values from keys
 
 dict_.items()   # dict_items([('a', 1) ('b', 2)])
 
+# 
+for i in range(1, 11):
+    print(i)
+
 
 dict1 = {1: 'a', 2: 'b', 3: 'c'}
 dict2 = {3: 'd', 4: 'e'}

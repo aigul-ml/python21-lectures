@@ -97,12 +97,23 @@ print(some_dict)
 # Создайте словарь a с числовыми значениями. Создайте новый словарь b, такой же как словарь а, но все четные значения замените на 2.
 
 a = {'a': 1, 'b': 4, 'c': 1, 'd': 5, 'e': 6}
-b = a.copy()
+b = {}
+for key in a:
+    value = a[key]    # обращаемся к словарю по ключу 
+    if value % 2 == 0:
+        b[key] = 2    # заменить данные в нашем словаре 
+    else:
+        b[key] = value
+print(b)    
 
-for k, v in list(b.items()):
-    if v % 2 == 0:
-        b[k] = 2
-print(b)
+
+
+# b = a.copy()
+
+# for k, v in list(b.items()):
+#     if v % 2 == 0:
+#         b[k] = 2
+# print(b)
 
 # key_list = [a]
 # for key, value in list(a.items()):
