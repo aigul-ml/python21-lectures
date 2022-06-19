@@ -31,8 +31,8 @@
 name_of_list = ['Helloworld']
 string_ = name_of_list.pop()
 
-part1 = len(string_) + 
-if len(string_) % 2 == 0
+# part1 = len(string_) + 
+# if len(string_) % 2 == 0
 
 
 
