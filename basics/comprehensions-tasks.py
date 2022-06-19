@@ -133,7 +133,8 @@ dict_ = {
     'Olga': {'history': 92, 'math': 96, 'literature': 81}, 
     'Nik': {'history': 84, 'math': 85, 'literature': 87}}
 
-new_dict = {key1: key2 for key1, val1 in dict_.items() for key2, val2 in val1.items() if key2 == max(val1, key = val1.get)}
+new_dict = {key1: key2 for key1, val1 in dict_.items() for key2, val2 in val1.items() 
+            if key2 == max(val1, key = val1.get)}
 
 print(new_dict)
 
@@ -162,9 +163,8 @@ print(dict_)
 
 # ????????????????????????????????#################################################
 # EXPLAIN: VS code gives an error but platform accepted as correct  
-# list_ = [i / 2 i for i in range(0, 11) if i % 2 == 0]
-# print(list_)
-
+list_ = [i / 2 for i in range(0, 11) if i % 2 == 0]
+print(list_)
 
 
 # Экстра задание 2
@@ -173,7 +173,9 @@ print(dict_)
 # если ключ четный, нужно заменить его значение на длину этого значения
 # если ключ нечетный то возвести длинну его значения в 3 степень
 # Распечатайте dict_. Нужно работать только с одним словарем, нельзя создавать доп. словарь. Необходимо использовать dict comprehension.
-
+dict_ = {1: 'a', 23: 'b', 345: 'c', 4567: 'd'}
+dict_ = {k: len(v) if k % 2 == 0 else len(v) ** 3 for (k, v) in dict_.items()}
+print(dict_)
 
 # Экстра задание 3
 # Создайте 2 сета set1 и set2 из 10 рандомных элементов
@@ -189,8 +191,3 @@ print(dict_)
 # B set2: {8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
 # Результат работы программы будет следующий:
 # "В этом сете было 2 повторения, его длинна составляет 18"
-
-
-
-
-
