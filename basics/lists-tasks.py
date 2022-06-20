@@ -28,8 +28,19 @@
 # Например, если список выглядит так: ['Helloworld!'] 
 # то, в результате получим: ['o', 'r', 'l', 'd', '!', 'H', 'e', 'l', 'l', 'o', 'w'] 
 
-name_of_list = ['Helloworld']
-string_ = name_of_list.pop()
+list_ = ['Helloworld!']
+new_list = []
+
+string = list_.pop()
+
+if len(string) % 2 > 0:
+    new_list.extend(string[len(string) // 2 + 1:])
+    new_list.extend(string[:len(string) // 2 + 1])
+else:
+    new_list.extend(string[len(string) // 2:])
+    new_list.extend(string[:len(string) // 2])
+
+print(new_list)
 
 # part1 = len(string_) + 
 # if len(string_) % 2 == 0
