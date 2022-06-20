@@ -85,3 +85,87 @@ except:
 else:
     print('else')
 
+# #######################################################
+# content from platform
+
+# ######################################
+
+"""try: 
+    code 1 
+
+except:
+    code 2
+else:
+    code 3
+"""    
+# 
+try: 
+    num1 = int(input('Please enter number'))
+
+except: 
+    print('You did not enter the number.')
+
+# 
+try:
+    num1 = int(input('Enter first number: '))
+    num2 = int(input('Enter second number: '))
+    result = num1 / num2
+# except Exception as e:    # голое исключение
+#     print('You have not entered number.', e)
+except ZeroDivisionError:
+    print('We cannot divide to zero.')
+except ValueError:
+    print('You have not enterd number.')
+else: 
+    print(result)
+finally:
+    print('Program has completed.')
+
+# 
+dict_ = dict.fromkeys(('makers', 'bootcamp', 'dictionary'), 0)
+# print(dict_)
+dict_ = {key: len(key) for key, val in dict_.items()}
+print(dict_)
+dict_.update({'except': 'Exception'})
+
+while True:
+    try:
+        key = input('Enter word: ')
+        if key == 'exit':
+            break
+        dict_[key] += 2   # значение по ключу 
+    except (KeyError, TypeError):
+        print('There is no such key in a dictionary or concatination is not manageable.')
+    else: 
+        print(dict_[key])
+    finally:
+        print(dict_)
+
+# 
+list_ = [i for i in range(1, 31)]
+
+try: 
+    index = int(input())
+    list_[index] = 'Makers'
+
+except IndexError:
+    print('You are out of list range.') 
+except ValueError:
+    print('Please enter the number, not a string.')
+else: 
+    print('There is no exception.')
+finally:
+    print(list_)
+
+# 
+try:
+    print(makers)
+except NameError:
+    print('You have not created variable - makers.')
+
+# how to generate exceptions 
+# raise 
+number = int(input('Enter number within the range 1-70'))
+if not number in range(1, 71):
+    raise Exception('You have entered number which is not within the rage 1-70')
+print('Okey')
