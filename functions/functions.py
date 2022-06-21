@@ -3,6 +3,7 @@
 # именнованный блок кода (у него есть название), который может принимать аргументы и возвращать результат
 
 from calendar import c
+from distutils.log import info
 from fnmatch import translate
 from itertools import count
 from turtle import right
@@ -188,3 +189,102 @@ print(list2, list_)             # [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 dict_ = {'a': 3, 'b': 6}
 dict2 = {**dict_}               # для распаковки словарей используются две * ---> **
 print(dict2)                    # {'a': 3, 'b': 6}
+
+"=================================== Content from Platform ===================================="
+# example 
+def subtract():
+    num1 = 20
+    num2 = 5
+    print(num1 + num2)
+    return num1 - num2
+print(subtract())                    # 15
+
+
+# example
+def subtract1():
+    num1 = 20
+    num2 = 5
+    print(num1 + num2)
+    return num1 - num2
+
+def function():
+    print("I am calling subtract function.")
+    variable = subtract1()
+    return variable
+
+print(function())
+# I am calling subtract function.
+# 25
+# 15
+
+
+# example
+def welcome(name, last_name):
+    return f'Welcome, {name} {last_name}'
+
+name = input()
+last_name = input()
+
+print(welcome(name, last_name))
+
+
+# example
+def get_word(word):
+    list_letters = list(word)
+    return list_letters
+
+def get_vowels(letters):
+    vowels = ['a', 'o', 'y', 'i', 'e', 'u']
+    list_vowels = [letter for letter in letters if letter in vowels]
+    result = ''.join(list_vowels)
+    return result
+
+my_word = input('Please enter word: ')
+print(get_vowels(get_word(my_word)))
+
+
+# example
+def info(name = 'Sam', age = 19):
+    return f'{name} is {age} years old.'
+print(info('John', age = 35))
+# {'name': 'John', 'age': 89}
+
+
+# example
+def test_func(n1, n2 = 9):
+    return n1 + n2
+print(test_func(n1 = 10))
+# 19 ---> n1 = 10 and n2 = 9 by default
+
+
+# example
+def create_profile(name, age, image = 'default.jpg'):
+    return name, age, image
+print(create_profile(name = 'Agu', age = 45, image = 'flower.png'))
+# ('Agu', 45, 'flower.png')
+
+
+# example
+def func(required, *args, **kwargs):
+    print(required)
+
+    if args: 
+        print(args)
+    
+    if kwargs:
+        print(kwargs)
+
+func('Makers', 'Bootcamp', 'Python', name = 'John', age = 89)
+# Makers
+# ('Bootcamp', 'Python')
+# {'name': 'John', 'age': 89}
+
+
+# example
+def many(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+many(1, 2, 3, name = 'Aigul', job = 'engineer')
+# (1, 2, 3)   ---> tuple/ кортеж
+# {'name': 'Aigul', 'job': 'engineer'}
