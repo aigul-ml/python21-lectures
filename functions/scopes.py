@@ -109,3 +109,62 @@ def func():
     inner_func()
     print(a)
 func() # 2
+
+
+"=================================== Content from Platform ===================================="
+# example
+name1 = 'makers'                        # global scope
+name2 = 'bootcamp'
+
+def func9():
+    name3 = 'helloworld'        # enclosing scope
+
+    def func10():
+        name4 = 'namespace'     # local scope
+
+"=================================== LEGB ===================================="
+# Built-in   [встроенная область]
+# Global scope
+# Enclosed scope   [замкнутая область]
+# Local scope
+
+# example
+this_var_is_visible = 'You can see me inside and outside the function.'
+
+def var_visibility():
+    this_var_is_not_visible = 'You can see me only inside the function.'
+    print(this_var_is_not_visible)
+print(this_var_is_visible)
+var_visibility()
+# You can see me inside and outside the function.
+# You can see me only inside the function.
+# print(this_var_is_not_visible)   # NameError: name 'this_var_is_not_visible' is not defined. Did you mean: 'this_var_is_visible'?
+
+
+# example
+word = 'I am global'
+
+def func_a():
+    word = 'I am local'
+    print(word)
+func_a()
+# I am local
+
+
+# example
+word0 = 'I am global'
+
+def outer():
+    word0 = 'I am enclosed'
+    print(word0)
+
+    def inner():
+        word0 = 'I am local'
+        print(word0)
+    inner()
+outer()
+print(word0)
+# I am local
+# I am enclosed
+# I am local
+# I am global
