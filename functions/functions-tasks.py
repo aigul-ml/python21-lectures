@@ -1,5 +1,6 @@
 # Задание 1
 # Создайте функцию add, которая будет принимать 2 числа, складывать их и возвращать результат сложения.
+import imp
 from unittest import result
 
 def add(num1, num2):
@@ -122,10 +123,58 @@ print(sum_digits(105))
 "================================ Classroom Tasks ============================================="
 # 1) Напишите функцию get_info, которая запрашивает у пользователя имя и фамилию, последовательно. Далее внутри get_info вызовите другую функцию generate_password, которая будет генерировать пароль при помощи конкатенации имени и фамилии пользователя и рандомных 7 чисел (в промежутке от 0 до 9). В конце функция get_info возвращает пользователю сгенерированный пароль.
 
+def generate_password(param1, param2):
+    import random
+    ramdom_list = random.sample(range(1, 10), k = 7)
+    random_list = [str(i) for i in ramdom_list]
+    password = param1 + param2 + ''.join(ramdom_list)
+    return password
 
+def get_info(name = input('Enter your name: '), surname = input('Enter your surname: ')):
+    password = generate_password(param1 = name, param2 = surname)
+    return password
+
+print(get_info())
+    
 
 # 2) Напишите калькулятор на функциях. У вас должна быть основная функция get_data, которая запрашивает два числа, и действие (сложение, вычитание, умножение, деление). И в зависимости от выбранного действия get_data должна вызывать ту или иную функцию, в которой будет прописан алгоритм выполнения действий. В конце выдается результат через функцию result.
 
+def add(a, b):
+    return a + b
+
+def substract(a, b): 
+    return a - b 
+
+def multiply(a, b): 
+    return a * b 
+
+def division(a, b): 
+    return a / b 
+
+def result(param):
+    return param
+
+def get_data(action):
+    num1 = int(input('Enter num1: '))
+    num2 = int(input('Enter num2: '))
+
+    dictionary = {'+': add(num1, num2), '-': substract(num1, num2), '*': multiply(num1, num2), '/': division(num1, num2)}
+    
+    some_result = dictionary[action]   # хранится результат какой-то из функций - умн., дел., сложение или вычитание 
+    return result(some_result)
+
+action = input('Select action from below: +, -, *, /:')
+print(get_data(action))
 
 
 # 3) Напишите функцию, которая будет принимать 2 обязательных параметра: вкус мороженого и размер. И также функция может принимать необязательные параметры, которые могут выступать в качестве топпинга к мороженому. Выдайте результат
+
+def ice_cream(name, size, **kwargs):    # **kwargs - возвращает словарь именнованных аргументов
+    print(f'Your{name} ice-cream {size} size')
+
+    if kwargs:
+        print('Your toppings: ' + '\n')
+        for value in kwargs.values():
+            print('\t' + value)
+
+ice_cream(name = 'chocolate', size = 'medium', topping1 = 'nuts', topping2 = 'coconut')

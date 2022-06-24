@@ -151,7 +151,7 @@ func_a()
 # I am local
 
 
-# example
+# example enclosed scope
 word0 = 'I am global'
 
 def outer():
@@ -168,3 +168,68 @@ print(word0)
 # I am enclosed
 # I am local
 # I am global
+
+
+# globals()  ---> prints dictionary in a global scope, возвращает текущий словарь глобального пространства имен
+name = 'Makers'
+name2 = 'Bootcamp'
+print(globals())
+# {'name': 'Makers'}
+
+
+# locals() --> отображает словарь локального пространства имен
+def func_(company):  # параметры функции являются локальными переменными
+    name = 'Bootcamp'
+    print(locals())
+
+func_(company='Makers')
+# {'company': 'Makers', 'name': 'Bootcamp'}
+
+
+# example
+def infor(name, age):
+    name = 'Alice'
+    age = 30 
+    print(locals())
+
+infor(name='Carly', age=34)
+# {'name': 'Alice', 'age': 30}  --> именнованный аргумент отображается первее чем локальный аргумент
+
+
+# изменение переменных вне области их функции
+x = 20 
+def func0():
+    x = 40
+    print(x)
+func0()    # 40 
+print(x)   # 20 
+
+
+# example
+my_list_ = ['makers', 'bootcamp', 'scope']
+def func8():
+    my_list_[-1] = 'namespace'
+func8()
+
+
+# example
+x = 20
+def func5(): 
+    global x  # ключевое слово, которое перезаписывает значение x в глобальном пространстве
+    x = 40
+    print(x)
+func5()    # 40
+print(x)   # 40
+
+
+# example [nonlocal]
+def outer_():     # enclosed scope
+    name = 'makers'
+
+    def inner():  # local scope
+        nonlocal name  # для обращения к переменной, которая находится в замкнутом пространстве имен - nonlocal будет искать переменную на замкнутом пространстве (в замкнутой области видимости)
+        name = 'bootcamp'
+
+    inner()    # enclosed scope
+    print(name)
+outer()   # makers

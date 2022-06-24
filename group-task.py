@@ -40,9 +40,30 @@
 # print(sum_digits(1234))
 
 
-def max_min(digit = 1234): 
-    if max(digit) in int(digit):
-        print(max(int(digit)))
-    #     replace(min(digit))
+# def max_min(digit = 1234): 
+#     if max(digit) in int(digit):
+#         print(max(int(digit)))
+#     #     replace(min(digit))
     # else: 
 
+
+# task 3
+num = 4321
+num1 = int(str(num)[0])
+num2 = int(str(num)[1])
+num3 = int(str(num)[2])
+num4 = int(str(num)[3])
+if num1 > num2 and num2 > num3 and num3 > num4: 
+    print('Yes')
+else:
+    print('No')
+
+
+num = 4331
+numbers = [int(i) for i in str(num)]
+sorted_numbers = numbers.copy()
+sorted_numbers.sort(reverse=True)
+if numbers == sorted_numbers:
+    print("yes")
+else:
+    print("no")
