@@ -1,4 +1,7 @@
 # example 1 
+from functools import reduce
+
+
 a = [1, 2, 3, 4]
 b = []
 numbers = ''
@@ -55,3 +58,330 @@ for k, v in zip(range(10), range(10, 21)):
             value = v if v % 2 == 1 else v ** 2
             d3[key] = value
 print(d3)
+
+
+# example
+# method 1 
+list5 = ['Paul', 'George', 'Ringo', 'John']
+def func(name1, name2):
+    if len(name1) > len(name2):
+        return name1
+    else:
+        return name2
+res = reduce(func, list5)
+
+# method 2
+res1 = reduce(lambda name1, name2: name1 if len(name1) > len(name2) else name2, list5)
+
+print(res)
+print(res == res1)
+# George
+# True
+
+# method 3
+res3 = list5[0]
+for i in list5:
+    if len(i) > len(res3):
+        res3 = i
+print(res3)
+
+
+# example
+dict_ = {'a': 3, 'b': 4, 'c': 5}
+
+dict2 = {k : v + 1 if v > 3 else v for k, v in dict_.items()}
+print(dict2)
+
+
+# example
+res9 = list('hello')
+res10 = []
+for i in 'hello':
+    res10.append(i)
+print(res9)
+print(res10)
+# 'h', 'e', 'l', 'l', 'o']
+# ['h', 'e', 'l', 'l', 'o']
+
+
+# example
+names = ['joHN', 'MAry', 'OleG', 'Name']
+def rename(name):
+    return name.title()
+
+# method 1 
+resk = []
+for i in names:
+    resk.append(rename(i))
+print(resk)
+
+#  method 2 
+resd = map(rename, names)
+rest = list(resd)
+print(rest)
+# ['John', 'Mary', 'Oleg', 'Name']
+# ['John', 'Mary', 'Oleg', 'Name']
+
+# method with lambda
+res = list(map(lambda name: name.title(), names))
+print(res)
+# ['John', 'Mary', 'Oleg', 'Name']
+
+
+# example with filter 
+list_ = ['inheritance', 'solid', 'polymorphism', 'dry', 'yagni']
+
+def func(x):
+    if len(x) > 7:
+        return False
+    return True
+
+res = func(list_[0])
+print(bool(res))   # True 
+
+
+# example
+dict_ = {'a': {'z': 1}, 'b': {'y': 2}, 'c': {'r': 3}}
+
+dict2 = {k : inner_v 
+for k, v in dict_.items() 
+for inner_v in v.values()}
+
+print(dict2)
+# {'a': 1, 'b': 2, 'c': 3}
+
+
+# global и nonlocal лезут немного выше
+# Цифры в комментариях обозначают порядок срабатывания
+numbers = '1'
+def func(): # 1
+    numbers = '2'
+    def func2(): # 2
+        nonlocal numbers
+        numbers = '3'
+        def func3(): # 3
+            nonlocal numbers
+            numbers = 1000
+        func3() # 3
+    func2() # 2
+func() # 1
+
+
+# Суть областей видимости в том, что можно использовать одинаковые названия в разных
+# местах, и они не будут друг-другу мешать. В ООП это явление называют полиморфизмом.
+class Person():
+
+    def voice(self):
+        print('hello')
+
+class Lion:
+
+    def voice(self):
+        print('rar')
+
+person = Person()
+lion = Lion()
+# Одинаковые названия, разный функционал, не мешают друг-другу
+person.voice()
+lion.voice()
+# Примеры можно найти даже в обычном питоне
+list.pop
+dict.pop
+set.pop
+
+######################################################################
+
+# Примеры одинаковой логики, в comprehension'ах, и через обычный цикл for
+
+# comprehension
+d = {
+    # Тернарные операторы можно использовать даже тут
+    k if k % 2 == 0 else None: v if v % 2 == 1 else v * 2
+    for k, v in zip(range(10), range(10,21))
+    # Эти if срабатывают первее всего
+    if k % 2 == 0 if v > 15
+}
+
+# Цикл
+d1 = {}
+for k, v in zip(range(10), range(10, 21)):
+    if k % 2 == 0:
+        if v > 15:
+            key = k if k % 2 == 0 else None
+            value = v if v % 2 == 1 else v * 2
+            d1[key] = value
+
+# Результаты идентичны
+print("➡ d :", d)
+print("➡ d1 :", d1)
+print(d == d1)
+
+
+###################### ЗАДАНИЯ ######################
+"""
+Создайте переменную list_ и сохраните в нем список со строками. Найдите самое длинное имя из списка функцией reduce. Результат сохраните в новой переменной result и выведите в консоль.
+"""
+from functools import reduce
+
+list_ = ['Paul', 'George', 'Ringo', 'John']
+
+# способ 1 (пошагово)
+def func(name1, name2):
+    if len(name1) > len(name2):
+        return name1
+    else:
+        return name2
+res = reduce(func, list_)
+print("➡ res :", res)
+
+# способ 2 (одна строка)
+res2 = reduce(lambda name1, name2: name1 if len(name1) > len(name2) else name2, list_)
+print("➡ res2 :", res2)
+
+# способ 3 (через цикл)
+res3 = list_[0]
+for i in list_:
+    if len(i) > len(res3):
+        res3 = i
+print("➡ res3 :", res3)
+
+# Вывод во всех случаях идентичен
+print(res2 == res3)
+print(res2 == res)
+
+##################################
+# Через for можно сделать вообще все
+res1 = list('hello') # ['h', 'e', 'l', 'l', 'o']
+res2 = []
+for i in 'hello':
+    res2.append(i)# ['h', 'e', 'l', 'l', 'o']
+print(res1)
+print(res2)
+
+###################################
+
+# Изменить имена тка, чтобы первая букыв была заглавной, остальные строчными
+names = ['joHN', 'MAry', 'OleG', 'Name']
+
+############## MAP ##################
+# способ 1 (работа map под капотом)
+def func(name):
+    return name.title()
+res = []
+for i in names:
+    res.append(
+        func(i)
+    )
+print("➡ res :", res)
+
+# способ 2 (по шагам)
+import sys
+# Map возвращает генератор
+map_ = map(func, names)
+# Map отдает по одному элементу за раз, 
+# и поэтому весит немного
+print(sys.getsizeof(map_)) # Размер генератора в байтах
+res = list(map_)
+print(sys.getsizeof(res)) # Размер списка в байтах
+# Генераторы одноразовые
+res1 = list(map_)
+print("➡ res :", res) # Результат есть
+print("➡ res1 :", res1) # Генератор отдал все раньше, пустой список
+
+# способ 3 (одна строка)
+res = list(map(lambda name: name.title(), names))
+print("➡ res :", res)
+
+
+########## FILTER #############
+# Отфильтровать все слова, оставив только те, длина которых больще 7
+list_ = ['inheritance', 'solid', 'polymorphism', 'dry', 'yagni',] 
+
+# способ 1 (под капотом)
+def func(x):
+    return len(x) > 7
+res = []
+for i in list_:
+    if func(i):
+        res.append(i)
+print("➡ res :", res)
+
+# способ 2 (пошагово)
+def func(x):
+    return len(x) > 7
+
+filter_ = filter(func, list_)
+res = list(filter_)
+print("➡ res :", res)
+
+# способ 3 (одна строка)
+res = list(filter(lambda x: len(x) > 7, list_))
+print("➡ res :", res)
+
+######################
+# Получить все слова с первой заглавной буквами, и остальными строчными, при этом отфильтровать, оставив только те, длина которых больще 7
+list_ = ['inheritance', 'solid', 'polymorphism', 'dry', 'yagni',] 
+
+# способ 1 (под капотом)
+def map_func(x: str) -> str:
+    return x.title()
+
+def filter_func(x: str) -> bool:
+    return len(x) > 7
+
+res = []
+for i in list_:
+    if filter_func(i):
+        res.append(map_func(i))
+print(res)
+
+# способ 2 (пошагово)
+def map_func(x: str) -> str:
+    return x.title()
+
+def filter_func(x: str) -> bool:
+    return len(x) > 7
+list_ = ['inheritance', 'polymorphism'] 
+
+filter_data = filter(filter_func, list_)
+map_ = map(map_func, filter_data)
+res = list(map_)
+print("➡ map_ :", res)
+
+# способ 3 (в одну строку)
+# Более понятный синтаксис
+# res = list(
+#     map(
+#         lambda x: x.title(), 
+#         filter(
+#             lambda x: len(x) > 7,
+#             list_
+#         )
+#     )
+# )
+
+# То же, что выше, но в одну строку
+res = list(map(lambda x: x.title(), filter(lambda x: len(x) > 7, list_)))
+print("➡ res :", res)
+
+######### ALL || ANY ########
+
+# All возвращает True если все значения True-подобные
+def all_(list_): # Как она работает под капотом
+    for i in list_:
+        if not i:
+            return False
+    return True
+
+list_ = [True, False, False]
+
+print(all(list_), all_(list_),)
+# Any возвращает True если хотя бы одно значение True-подобное
+def any_(list_): # Как она работает под капотом
+    for i in list_:
+        if i:
+            return True
+    return False
+
+print(any(list_), any_(list_))
+######
